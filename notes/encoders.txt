@@ -1,0 +1,20 @@
+Encoder models use only the encoder of a Transformer model. At each stage, the attention layers can access all the words in the initial sentence. These models are often characterized as having “bi-directional” attention, and are often called auto-encoding models.
+
+Auto-Encoder Models:
+
+Purpose: Auto-encoder models are unsupervised learning models used for representation learning and data compression. They aim to reconstruct the input data from a lower-dimensional representation (latent space).
+Architecture: Auto-encoders consist of two main components: an encoder and a decoder. The encoder takes the input data and maps it to a lower-dimensional representation in the latent space. The decoder then takes this representation and reconstructs the original data.
+Training: The auto-encoder is trained to minimize the difference between the input data and the reconstructed data. During training, the model learns to capture the most salient features of the input data in the latent space.
+Applications: Auto-encoders are used for various tasks, such as data compression, anomaly detection, denoising, and feature learning.
+
+The pretraining of these models usually revolves around somehow corrupting a given sentence (for instance, by masking random words in it) and tasking the model with finding or reconstructing the initial sentence.
+
+Encoder models are best suited for tasks requiring an understanding of the full sentence, such as sentence classification, named entity recognition (and more generally word classification), and extractive question answering.
+
+Representatives of this family of models include:
+
+ALBERT
+BERT
+DistilBERT
+ELECTRA
+RoBERTa

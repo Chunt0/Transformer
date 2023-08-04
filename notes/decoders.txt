@@ -1,0 +1,19 @@
+Auto-Regression Models:
+
+Purpose: Auto-regression models are used for time series forecasting, where the goal is to predict future values based on past observations.
+Architecture: In auto-regression, the model predicts the next value in the time series based on previous observations. The prediction is made by using the historical values as inputs and applying regression techniques, often linear regression or variants of it.
+Training: Auto-regression models are typically trained using the historical time series data, where the target variable is shifted by one time step to represent the next value to be predicted.
+Applications: Auto-regression models are widely used in finance, economics, weather forecasting, and any other domain with time-dependent data.
+
+Decoder models use only the decoder of a Transformer model. At each stage, for a given word the attention layers can only access the words positioned before it in the sentence. These models are often called auto-regressive models.
+
+The pretraining of decoder models usually revolves around predicting the next word in the sentence.
+
+These models are best suited for tasks involving text generation.
+
+Representatives of this family of models include:
+
+CTRL
+GPT
+GPT-2
+Transformer XL
