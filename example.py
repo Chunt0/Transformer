@@ -1,27 +1,15 @@
-import torch
-from transformers import AdamW, AutoTokenizer, AutoModelForSequenceClassification
+from transformers import AutoTokenizer
 from datasets import load_dataset
 
 
-# The steps are - define a pretrained checkpoint
-# Initialize a tokenizer and a model for the task you are wishing to use
-# 
+raw_datasets = load_dataset("glue", "mrpc")
 
 checkpoint = "bert-base-uncased"
 tokenizer = AutoTokenizer.from_pretrained(checkpoint)
-model = AutoModelForSequenceClassification.from_pretrained(checkpoint)
-sequences = ["The detective carefully examined the evidence, piecing together clues to solve the mysterious murder case.","The team of scientists conducted extensive experiments, analyzing data from various sources to validate their groundbreaking hypothesis."]
+tokenized_sentence_1 = tokenizer(raw_datasets["train"]["sentence1"])
+tokenized_sentence_2 = tokenizer(raw_datasets["train"]["sentence2"])
 
-batch = tokenizer(sequences, padding=True, truncation=True, return_tensors="pt")
+inputs = tokenizer("Bilibili is the best website.", "Nacho cheesea all over the house?")
+inputs = tokenizer.convert_ids_to_tokens(inputs["input_ids"])
 
-batch["labels"] = torch.tensor([1, 1])
-
-optimizer = torch.optim.AdamW(model.parameters())
-loss = model(**batch).loss
-loss.backward()
-optimizer.step()
-
-raw_datasets = load_dataset("glue", "mrpc")
-raw_train = raw_datasets["train"]
-print(raw_train[15])
-print(raw_train[87])
+print(inputs)
